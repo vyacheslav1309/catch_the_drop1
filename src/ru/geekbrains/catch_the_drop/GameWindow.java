@@ -1,13 +1,21 @@
 package ru.geekbrains.catch_the_drop;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.io.IOException;
 
 public class GameWindow extends JFrame
 {
     private static GameWindow game_window;
-    public static void main(String[] args) {
+    private static Image background;
+    private static Image game_over;
+    private static Image drop;
+    public static void main  (String[] args) throws IOException {
 	// write your code here
+        background  = ImageIO.read(GameWindow.class.getResourceAsStream(("background.jpg")));
+        game_over = ImageIO.read(GameWindow.class.getResourceAsStream(("game_over.png")));
+        drop = ImageIO.read(GameWindow.class.getResourceAsStream(("drop.png")));
         game_window = new GameWindow();
         game_window.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         game_window.setLocation(200, 100);
@@ -18,8 +26,9 @@ public class GameWindow extends JFrame
         game_window.setVisible(true);
     }
     private static void onRepaint(Graphics g) {
-    g.fillOval(10, 10, 200, 100);
-    g.drawLine(500, 300, 600, 150);
+    g.drawImage(background, 0, 0, null);
+    g.drawImage(drop,100, 100, null);
+
     }
     private static class GameField extends JPanel{
         @Override
