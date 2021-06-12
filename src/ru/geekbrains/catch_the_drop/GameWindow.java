@@ -4,9 +4,10 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.io.IOException;
+import java.util.Objects;
 
 
-    public class GameWindow extends JFrame{
+public class GameWindow extends JFrame{
 
         private static GameWindow game_window;
         private static long last_frame_time;
@@ -18,9 +19,9 @@ import java.io.IOException;
         private static float drop_v = 200;
 
         public static void main(String[] args) throws IOException {
-            background = ImageIO.read(GameWindow.class.getResourceAsStream("background.png"));
-            game_over = ImageIO.read(GameWindow.class.getResourceAsStream("game_over.png"));
-            drop = ImageIO.read(GameWindow.class.getResourceAsStream("drop.png"));
+            background = ImageIO.read(Objects.requireNonNull(GameWindow.class.getResourceAsStream("background.png")));
+            game_over = ImageIO.read(Objects.requireNonNull(GameWindow.class.getResourceAsStream("game_over.png")));
+            drop = ImageIO.read(Objects.requireNonNull(GameWindow.class.getResourceAsStream("drop.png")));
             game_window = new GameWindow();
             game_window.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
             game_window.setLocation(200, 100);
